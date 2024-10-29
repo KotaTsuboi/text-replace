@@ -6,9 +6,12 @@
 </head>
 
 <body>
-    <textarea id="rules" onChange=></textarea>
-    <textarea id="input"></textarea>
-    <textarea id="output" readonly></textarea>
+    <h3>Rules</h3>
+    <textarea id="rules" style="width:30%;", rows="10"></textarea>
+    <h3>Input</h3>
+    <textarea id="input" style="width:50%;", rows="20"></textarea>
+    <h3>output</h3>
+    <textarea id="output" style="width:50%;", rows="20" readonly></textarea>
 </body>
 
 <script>
@@ -16,12 +19,8 @@
     let inputArea = document.getElementById("input");
     let outputArea = document.getElementById("output");
 
-    inputArea.addEventListener("keyup", (e) => {
-        replace();
-    });
-    rulesArea.addEventListener("keyup", (e) => {
-        replace();
-    });
+    inputArea.addEventListener("keyup", replace);
+    rulesArea.addEventListener("keyup", replace);
 
     function replace() {
         const map = new Map();

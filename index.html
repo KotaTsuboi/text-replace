@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<body>
+    <textarea id="rules" onChange=></textarea>
+    <textarea id="input"></textarea>
+    <textarea id="output" readonly></textarea>
+</body>
+
+<script>
+    let rulesArea = document.getElementById("rules");
+    let inputArea = document.getElementById("input");
+    let outputArea = document.getElementById("output");
+
+    inputArea.addEventListener("keyup", (e) => {
+        replace();
+    });
+    rulesArea.addEventListener("keyup", (e) => {
+        replace();
+    });
+
+    function replace() {
+        const map = new Map();
+
+        let rules = rulesArea.value.split("\n");
+
+        for (let rule of rules) {
+            rule = rule.trim();
+            rule = rule.replaceAll(/\s+/g, " ");
+
+            if (!rule) {
+                continue
+            }
+
+            rule = rule.split(" ");
+
+            if (rule.length > 1) {
+                map.set(rule[0], rule[1])
+            }
+        }
+
+        let input = inputArea.value
+
+        for (const [key, value] of map) {
+            input = input.replaceAll(key, value)
+        }
+
+        outputArea.value = input
+    }
+</script>
+</html>

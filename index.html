@@ -1,18 +1,82 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title></title>
 </head>
 
 <body>
-    <h3>Rules</h3>
-    <textarea id="rules" style="width:30%;", rows="10"></textarea>
-    <h3>Input</h3>
-    <textarea id="input" style="width:50%;", rows="20"></textarea>
-    <h3>output</h3>
-    <textarea id="output" style="width:50%;", rows="20" readonly></textarea>
+    <div class="parent">
+        <div class="child">
+            <h3>Rules</h3>
+            <textarea id="rules" rows="10">
+input output</textarea>
+        </div>
+        <div class="child">
+            <h1>Text Replace</h1>
+            <ul>
+                <li><code>Input</code>に入力した文字列を<code>Rules</code>に書かれたルールで置換して<code>Output</code>に出力します</li>
+                <li><code>Rules</code>には空白区切りで置換前と置換後のパターンを入力します</li>
+                <li>1行で1つのルールとみなします</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="parent">
+        <div class="child">
+            <h3>Input</h3>
+            <textarea id="input" rows="20">This is input text</textarea>
+        </div>
+        <div class="child">
+            <h3>Output</h3>
+            <textarea id="output" rows="20" readonly></textarea>
+        </div>
+    </div>
 </body>
+
+<style>
+    body {
+        background-color: #222222;
+        color: #EEEEEE;
+        font-size: 14pt;
+    }
+
+    .parent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .child {
+        width: 30%;
+        margin: 12px;
+        display: flex;
+        flex-flow: column;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    textarea {
+        width: 90%;
+        resize: none;
+        border-radius: 12px;
+        padding: 5%;
+        background-color: #2B2B2B;
+        border-color: #BBBBBB;
+        font-family: monospace;
+        border-width: 1px;
+        color: #EEEEEE;
+        font-size: 12pt;
+    }
+
+</style>
 
 <script>
     let rulesArea = document.getElementById("rules");
@@ -21,6 +85,8 @@
 
     inputArea.addEventListener("keyup", replace);
     rulesArea.addEventListener("keyup", replace);
+
+    replace();
 
     function replace() {
         const map = new Map();
@@ -51,4 +117,5 @@
         outputArea.value = input
     }
 </script>
+
 </html>
